@@ -32,3 +32,11 @@ Constructor Injection Development Process
 	1. Define the dependency interface and class
 	2. Create a constructor in your class for injections
 	3. Configure the dependency injection in Spring configuration file
+	
+How Spring process the configuration file
+	<bean id="myFortune" class="com.ps.springdemo.HappyFortuneService"></bean>
+	=>	HappyFortuneService myFortune = new HappyFortuneService();
+	
+    <bean id="myCoach" class="com.ps.springdemo.TrackCoach">
+    	<constructor-arg ref="myFortune"/> </bean>
+    =>	TrackCoach myCoach = new TrackCoach(myFortune);
