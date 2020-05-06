@@ -1,0 +1,34 @@
+Interface - Coach
+Classes - BaseballCoach, TrackCoach (implements Coach)
+
+Spring Bean - When Java objects are created by the Spring Container,
+			  then Spring refers to them as "Spring Beans".
+
+Spring Container is generally known as ApplicationContext			  
+Spring Container functions:
+	Creates and manages objects (Inversion of Control)
+	Inject oject's dependencies (Dependency Injection)
+	
+Configuring Spring Container
+	XML configuration file
+	Java annotations
+	Java source code
+
+Spring Inversion of Control (IoC)
+	Spring provides an Object Factory which on the base of configuration file,
+	it provides the appropriate implementation. The app will be configurable.
+	
+Spring IoC Development Process
+	1. Configure your Spring Beans
+	2. Create a Spring Container
+	3. Retrieve Beans from Spring Container 
+	
+Dependency Injection
+	Dependency Injection Principle - The client delegates to call another object
+									 the responsibility of providing its dependencies
+	Two most common types - Constructor Injection, Setter Injection
+
+Constructor Injection Development Process
+	1. Define the dependency interface and class
+	2. Create a constructor in your class for injections
+	3. Configure the dependency injection in Spring configuration file
