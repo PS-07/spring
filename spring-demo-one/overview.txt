@@ -32,11 +32,33 @@ Constructor Injection Development Process
 	1. Define the dependency interface and class
 	2. Create a constructor in your class for injections
 	3. Configure the dependency injection in Spring configuration file
+    
+Setter Injection Development Process
+	1. Create setter method(s) in your class for injections
+	2. Configure the dependency injection in configuration files
 	
+Injecting values from Properties file
+	1. Create a Property file
+	2. Load the Property file in Spring configuration file
+	3. Reference values from the Property file 
+
 How Spring process the configuration file
 	<bean id="myFortune" class="com.ps.springdemo.HappyFortuneService"></bean>
 	=>	HappyFortuneService myFortune = new HappyFortuneService();
 	
+	// Constructor Injection
     <bean id="myCoach" class="com.ps.springdemo.TrackCoach">
     	<constructor-arg ref="myFortune"/> </bean>
     =>	TrackCoach myCoach = new TrackCoach(myFortune);
+    
+    // Setter Injection
+    <bean id="myCricketCoach" class="com.ps.springdemo.CricketCoach">
+    	<property name="fortuneService" ref="myFortune"/> </bean>
+    =>	CricketCoach myCricketCoach = new CricketCoach();
+    	myCricketCoach.setFortuneService(myFortune);
+    	[spring creates at setter function named set{name}() with first letter of name capitalized]
+    	
+    // Injecting literals values (from Property file)
+    <context:property-placeholder location="classpath:sport.properties" />
+    <property name="emailAddress" value="${foo.email}" />
+    <property name="team" value="${foo.team}" />
