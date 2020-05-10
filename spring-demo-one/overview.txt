@@ -62,3 +62,19 @@ How Spring process the configuration file
     <context:property-placeholder location="classpath:sport.properties" />
     <property name="emailAddress" value="${foo.email}" />
     <property name="team" value="${foo.team}" />
+    
+Bean Scope
+	Scope refers to the life cycle of a bean. Default scope is singleton
+	singleton: - spring container creates only one instance of the bean
+		       - it is cached in memory
+		       - all requests to the bean will return a shared reference
+	prototype: creates a new instance for each container request
+	request, session, global-session: scoped to HTTP web request, used for web apps
+	defining scope - <bean scope="..."> </bean>
+	
+Bean Lifecycle
+	Container started -> Bean instantiated -> Dependency injected -> Internal spring processing ->
+	[Custom init method] -> Bean ready for use -> Container shutdown -> [Custom destroy method] -> STOP
+	
+	Hooks - You can add custom code during [bean initialization] and [bean destruction]
+	<bean init-method="..." destroy-method="..."> </bean>
